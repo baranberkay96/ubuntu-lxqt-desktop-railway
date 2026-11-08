@@ -1,6 +1,6 @@
 # Deploy and Host Ubuntu 26.04 LXQt Desktop with Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/ubuntu-lxqt-desktop?referralCode=20H68q)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/ubuntu-2604-lxqt-desktop-in-your-browser?referralCode=20H68q)
 
 A light Ubuntu 26.04 LTS desktop with LXQt that you open in a browser tab. It comes with Chromium, the PCManFM-Qt file manager, QTerminal and FeatherPad, and needs less memory than KDE or XFCE. A generated password protects it, and your home directory (files, settings, browser profile) lives on a persistent volume.
 
