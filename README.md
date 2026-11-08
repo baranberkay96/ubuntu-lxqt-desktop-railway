@@ -34,7 +34,7 @@ A browser desktop needs a display server, a desktop session, a streaming server,
 |---|---|---|---|
 | Desktop | Wayland (labwc) desktop session, D-Bus, audio, Selkies (loopback only), nginx (login, `/healthz`), all supervised by s6 | `/config` | 3000 (public HTTPS domain) |
 
-**Plan:** Runs on Trial and Free (the lightest desktop of the set); Hobby is recommended for Chromium with several tabs.
+**Plan:** Measured on Railway: about 0.35 to 0.45 GB of RAM with one browser session connected and no apps open, the lightest of these desktops. It runs within Trial's 1 GB; on Free's 0.5 GB it starts but has no room for a browser. Use Hobby and 2 GB or more for Chromium with several tabs.
 
 **First login**
 
