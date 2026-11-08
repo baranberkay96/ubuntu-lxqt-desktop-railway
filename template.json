@@ -1,0 +1,84 @@
+{
+  "name": "Ubuntu 26.04 LXQt Desktop in Your Browser",
+  "description": "Lightweight Ubuntu 26.04 LXQt desktop in a browser tab, persistent home.",
+  "category": "Other",
+  "tags": [
+    "ubuntu",
+    "lxqt",
+    "linux-desktop",
+    "lightweight",
+    "remote-desktop",
+    "webtop",
+    "selkies",
+    "chromium"
+  ],
+  "image": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ubuntu-linux.svg",
+  "upstream": {
+    "repo": "linuxserver/docker-webtop",
+    "version": "ubuntu-lxqt-8eee505a-ls6",
+    "image": "lscr.io/linuxserver/webtop:ubuntu-lxqt-8eee505a-ls6@sha256:ba4ccfec4e4a24c3279de24090a004143bf2bea92f8c6e1cff355dd2378586f8",
+    "base": "baseimage-selkies:ubunturesolute",
+    "checked": "2026-11-08"
+  },
+  "services": {
+    "Desktop": {
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ubuntu-linux.svg",
+      "source": {
+        "repo": "baranberkay96/ubuntu-lxqt-desktop-railway",
+        "rootDirectory": "/services/desktop"
+      },
+      "startCommand": null,
+      "preDeployCommand": null,
+      "healthcheckPath": "/healthz",
+      "healthcheckTimeout": 600,
+      "restartPolicyType": "ON_FAILURE",
+      "restartPolicyMaxRetries": 10,
+      "numReplicas": 1,
+      "cronSchedule": null,
+      "publicDomain": true,
+      "targetPort": 3000,
+      "tcpProxy": null,
+      "volume": {
+        "mountPath": "/config"
+      },
+      "variables": {
+        "PASSWORD": {
+          "defaultValue": "${{secret(32)}}",
+          "description": "Browser login password, generated at deploy (copy it from this variable). Min 8 chars, 12+ recommended. The desktop does not start without it.",
+          "required": false
+        },
+        "CUSTOM_USER": {
+          "defaultValue": "ubuntu",
+          "description": "Browser login name (letters, digits, . _ @ -). The Linux account inside the desktop is 'abc', with passwordless sudo.",
+          "required": false
+        },
+        "PORT": {
+          "defaultValue": "3000",
+          "description": "Port of the desktop's web server (nginx). The public domain and the healthcheck use it. 3001 and 8082 are used internally.",
+          "required": false
+        },
+        "TZ": {
+          "defaultValue": "Etc/UTC",
+          "description": "Time zone of the desktop clock and apps, e.g. Europe/Istanbul.",
+          "required": false
+        },
+        "TITLE": {
+          "defaultValue": "Ubuntu 26.04 LXQt Desktop",
+          "description": "Browser tab title of the desktop page.",
+          "required": false
+        },
+        "APT_PACKAGES": {
+          "defaultValue": "",
+          "description": "Optional. Distribution packages (space-separated) reinstalled in the background after every redeploy, e.g. 'gimp vlc'.",
+          "required": false
+        },
+        "RAILWAY_DEPLOYMENT_DRAINING_SECONDS": {
+          "defaultValue": "15",
+          "description": "Seconds between stop signal and kill on redeploy, so desktop apps and services shut down cleanly.",
+          "required": false
+        }
+      }
+    }
+  },
+  "buckets": []
+}
